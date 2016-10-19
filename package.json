@@ -1,0 +1,33 @@
+{
+  "name": "ts-bitset",
+  "version": "1.0.0",
+  "description": "efficient and resizable packed bitset (aka bit array, bit vector) in Typescript",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rmnoon/ts-bitset.git"
+  },
+  "scripts": {
+    "build": "npm run clean && webpack --progress --colors",
+    "prod": "PROD_ENV=1 npm run build",
+    "test": "karma start",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-sourcemap-loader": "^0.3.6",
+    "karma-spec-reporter": "0.0.26",
+    "karma-webpack": "1.8.0",
+    "phantomjs-prebuilt": "^2.1.12",
+    "ts-loader": "^0.8.2",
+    "tslint": "^3.14.0",
+    "tslint-loader": "^2.1.5",
+    "typescript": "^1.8.10",
+    "webpack": "^1.12.8"
+  }
+}
