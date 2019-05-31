@@ -1,6 +1,6 @@
 {
   "name": "ts-bitset",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "efficient and resizable packed bitset (aka bit array, bit vector) in Typescript",
   "license": "MIT",
   "repository": {
@@ -8,26 +8,21 @@
     "url": "git://github.com/rmnoon/ts-bitset.git"
   },
   "scripts": {
-    "build": "npm run clean && webpack --progress --colors",
-    "prod": "PROD_ENV=1 npm run build",
-    "test": "karma start",
+    "test": "BUILD=dev PROJECTS=test webpack --progress --colors && cd dist && node --inspect ../node_modules/jasmine/bin/jasmine.js tests.js",
     "clean": "rm -rf dist"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-    "jasmine-core": "^2.4.1",
-    "karma": "^1.0.0",
-    "karma-jasmine": "^1.0.2",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-sourcemap-loader": "^0.3.6",
-    "karma-spec-reporter": "0.0.26",
-    "karma-webpack": "1.8.0",
-    "phantomjs-prebuilt": "^2.1.12",
-    "ts-loader": "^0.8.2",
-    "tslint": "^3.14.0",
-    "tslint-loader": "^2.1.5",
-    "typescript": "^1.8.10",
-    "webpack": "^1.12.8"
+    "@types/jasmine": "^2.2.34",
+    "@types/webpack-env": "^1.13.9",
+    "awesome-typescript-loader": "^5.2.1",
+    "jasmine": "^2.7.0",
+    "jasmine-spec-reporter": "^3.2.0",
+    "tslint": "^5.9.1",
+    "tslint-webpack-plugin": "^2.0.4",
+    "typescript": "3.4.3",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.3.2",
+    "webpack-node-externals": "^1.7.2"
   }
 }

@@ -81,11 +81,3 @@ function expectOn(set: BitSet, numOn: number) {
     expect(set.numOn()).toBe(sum);
     expect(set.numOff()).toBe(set.size() - sum);
 }
-
-// function print(set: BitSet) {
-//     const logSize = set.size();
-//     const buf = new Uint32Array(set.buffer);
-//     for (let i = 0; i < buf.length * 32; i++) {
-//         console.log(i < logSize ? 'in: ' : 'over: ', set.check(i));
-//     }
-// }
