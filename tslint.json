@@ -1,28 +1,34 @@
 {
-  /*
-   * Possible values:
-   * - the name of a built-in config
-   * - the name of an NPM module which has a "main" file that exports a config object
-   * - a relative path to a JSON file
-   */
   "extends": "tslint:recommended",
   "rules": {
-    /*
-     * Any rules specified here will override those from the base config we are extending
-     */
      "member-access": false,
-     "quotemark": [true, "single", "avoid-escape"],
+     "quotemark": [true, "single", "avoid-escape", "jsx-double"],
      "max-line-length": [false],
      "object-literal-sort-keys": false,
      "trailing-comma": [true, {"multiline": "never", "singleline": "never"}],
      "curly": false,
      "no-var-requires": false,
      "no-string-literal": false,
-     "interface-name": [ true, "never-prefix" ],
-     "variable-name": ["check-format", "allow-leading-underscore"],
+     "interface-name": [true, "never-prefix"],
+     "variable-name": [true, "check-format", "allow-leading-underscore", "allow-pascal-case"],
      "forin": false,
-     "one-variable-per-declaration": false,
+     "one-variable-per-declaration": [false],
      "no-console": [false],
-     "no-empty": false
+     "no-empty": false,
+     "ordered-imports": [false],
+     "arrow-parens": false,
+     "object-literal-shorthand": false,
+     "no-invalid-this": true,
+     "max-classes-per-file": false,
+     "array-type": [false],
+     "member-ordering": [false],
+     "no-empty-interface": false,
+     "no-misused-new": false,
+     "no-return-await": false,
+     "no-angle-bracket-type-assertion": false,
+     "prefer-object-spread": true,
+     "no-inferred-empty-object-type": true,
+     "await-promise": [true, "Bluebird", "PromiseLike", "PDFPromise"],
+     "no-floating-promises": [true, "Bluebird", "PromiseLike", "PDFPromise", "Promises/A+", "JQueryPromise"]
   }
 }

@@ -3,8 +3,7 @@
 An efficient and resizable packed bitset (aka bit array, bit vector) in Typescript.
 
 ## Setup
-* `npm install` for dev dependencies
-* `npm run build` for .js and minified .js in `/dist`.
+* `yarn install` for dev dependencies
 * `npm test` to run the test
 
 ## Usage

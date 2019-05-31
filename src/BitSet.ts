@@ -14,16 +14,16 @@ export class BitSet {
     }
 
     check(idx: number): boolean {
-        return (this._buffer[elemIdx(idx)] & (1 << bitPlace(idx))) !== 0; // tslint:disable-line
+        return (this._buffer[elemIdx(idx)] & (1 << bitPlace(idx))) !== 0; // tslint:disable-line:no-bitwise
     }
 
     set(idx: number, val: boolean): void {
         const existing = this.check(idx);
         if (val === existing) return;
         if (val) {
-            this._buffer[elemIdx(idx)] |= 1 << bitPlace(idx); // tslint:disable-line
+            this._buffer[elemIdx(idx)] |= 1 << bitPlace(idx); // tslint:disable-line:no-bitwise
         } else {
-            this._buffer[elemIdx(idx)] &= ~(1 << bitPlace(idx)); // tslint:disable-line
+            this._buffer[elemIdx(idx)] &= ~(1 << bitPlace(idx)); // tslint:disable-line:no-bitwise
         }
         this._numOn += val ? 1 : -1;
     }
@@ -36,7 +36,7 @@ export class BitSet {
                 fill(this._buffer, FULL_ELEM);
             } else { // fill up to overhang, write last elem manually
                 fill(this._buffer, FULL_ELEM, this._buffer.length - 1);
-                this._buffer[this._buffer.length - 1] = (1 << numOverhang) - 1; // tslint:disable-line
+                this._buffer[this._buffer.length - 1] = (1 << numOverhang) - 1; // tslint:disable-line:no-bitwise
             }
             this._numOn = this._size;
         } else {
@@ -65,7 +65,7 @@ export class BitSet {
                 // clear any bits above the overhang
                 const numOverhang = newSize % PER_ELEM_BITS;
                 if (numOverhang > 0) {
-                    newBuf[newBuf.length - 1] &= (1 << numOverhang) - 1; // tslint:disable-line
+                    newBuf[newBuf.length - 1] &= (1 << numOverhang) - 1; // tslint:disable-line:no-bitwise
                 }
 
                 this._numOn = numOn(newBuf, newSize);
@@ -121,16 +121,16 @@ function numOn(buf: Uint32Array, size: number): number {
 
 function popcount(anInt: number, topBitPlaceToStart?: number) {
     if (topBitPlaceToStart !== undefined) {
-        anInt &= (1 << topBitPlaceToStart) - 1 // tslint:disable-line
+        anInt &= (1 << topBitPlaceToStart) - 1; // tslint:disable-line:no-bitwise
     }
 
-    anInt -= anInt >> 1 & 0x55555555 // tslint:disable-line
-    anInt = (anInt & 0x33333333) + (anInt >> 2 & 0x33333333) // tslint:disable-line
-    anInt = anInt + (anInt >> 4) & 0x0f0f0f0f // tslint:disable-line
-    anInt += anInt >> 8 // tslint:disable-line
-    anInt += anInt >> 16 // tslint:disable-line
+    anInt -= anInt >> 1 & 0x55555555;  // tslint:disable-line:no-bitwise
+    anInt = (anInt & 0x33333333) + (anInt >> 2 & 0x33333333);  // tslint:disable-line:no-bitwise
+    anInt = anInt + (anInt >> 4) & 0x0f0f0f0f;  // tslint:disable-line:no-bitwise
+    anInt += anInt >> 8;  // tslint:disable-line:no-bitwise
+    anInt += anInt >> 16;  // tslint:disable-line:no-bitwise
 
-    return anInt & 0x7f // tslint:disable-line
+    return anInt & 0x7f;  // tslint:disable-line:no-bitwise
 }
 
 // world's jankiest polyfill
